@@ -1,0 +1,151 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Welcome Page</title>
+  <style>
+    body, html {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      font-family: 'Arial', sans-serif;
+    }
+
+    .background {
+      background-image: url("{% static 'polls/images/gambcs.jpg' %}");
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      height: 100vh;
+      min-height: 100vh;
+      color: white;
+      text-shadow: 1px 1px 4px #000;
+      text-align: center;
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      flex-direction: column;
+    }
+
+    @media (max-width: 768px) {
+      .background {
+        background-position: top center;
+      }
+    }
+
+    .content-wrapper {
+      margin-top: 5cm;
+      width: 100%;
+      padding: 0 20px;
+      box-sizing: border-box;
+    }
+
+    h1 {
+      font-size: 48px;
+      margin-bottom: 20px;
+    }
+
+    .button-row {
+      display: flex;
+      justify-content: center;
+      gap: 60px;
+      margin-top: 6cm;
+      flex-wrap: wrap;
+    }
+
+    .button-group {
+      text-align: center;
+      min-width: 150px;
+    }
+
+    .button-group h2 {
+      margin-bottom: 15px;
+    }
+
+    .btn {
+      padding: 15px 30px;
+      font-size: 18px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      background-color: rgba(0, 0, 0, 0.6);
+      color: white;
+      transition: background-color 0.3s ease;
+      text-decoration: none;
+      display: inline-block;
+      white-space: nowrap;
+    }
+
+    .btn:hover {
+      background-color: rgba(255, 255, 255, 0.2);
+    }
+
+    .guest-button {
+      margin-top: 40px;
+    }
+
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 32px;
+      }
+      .button-row {
+        flex-direction: column;
+        gap: 30px;
+        margin-top: 3cm;
+      }
+      .btn {
+        width: 100%;
+        max-width: 250px;
+        font-size: 16px;
+      }
+      .content-wrapper {
+        margin-top: 3cm;
+        padding: 0 15px;
+      }
+    }
+
+    @media (max-width: 400px) {
+      h1 {
+        font-size: 24px;
+      }
+      .btn {
+        padding: 12px 20px;
+        font-size: 14px;
+      }
+      .button-row {
+        margin-top: 2cm;
+      }
+      .content-wrapper {
+        margin-top: 2cm;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="background">
+    <div class="content-wrapper">
+      <h1>Máte už vytvorený účet na našej stránke, alebo sa chcete registrovať?</h1>
+
+      <div class="button-row">
+        <div class="button-group">
+          <h2>Prihláste sa na svoj účet.</h2>
+          <a href="{% url 'polls:login' %}" class="btn">Prihlásiť sa </a>
+        </div>
+
+        <div class="button-group">
+          <h2>Vytvoriť si vlastný účet.</h2>
+          <a href="{% url 'polls:register' %}" class="btn">Registrovať sa</a>
+        </div>
+      </div>
+
+      <!-- ✅ Guest button -->
+      <div class="guest-button">
+        <a href="{% url 'polls:guest' %}" class="btn">Prejsť na stránku ako hosť.</a>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
